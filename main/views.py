@@ -49,7 +49,7 @@ class MijozListCreateView(ListCreateAPIView):
     def get_queryset(self):
         user = self.request.user
         if hasattr(user, 'sotuvchi') and user.sotuvchi.bolim:
-            return Mijoz.objects.filter(bolim=user.sotuvchi.bolim).order_by('nom')
+            return Mijoz.objects.filter(bolim=user.sotuvchi.bolim).order_by('ism')
         return Mijoz.objects.none()
 
     serializer_class = MijozSerializer
@@ -66,7 +66,7 @@ class MijozRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         user = self.request.user
         if hasattr(user, 'sotuvchi') and user.sotuvchi.bolim:
-            return Mijoz.objects.filter(bolim=user.sotuvchi.bolim).order_by('nom')
+            return Mijoz.objects.filter(bolim=user.sotuvchi.bolim).order_by('ism')
         return Mijoz.objects.none()
 
     serializer_class = MijozSerializer
